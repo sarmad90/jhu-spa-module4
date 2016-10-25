@@ -13,11 +13,11 @@
         // template: "<h2>Hi from routes</h2>"
         templateUrl: 'src/tab1.html'
       })
-    //
-    //   .state('tab2', {
-    //     url: '/tab2',
-    //     templateUrl: 'src/tab2.html'
-    //   });
+
+      .state('tab2', {
+        url: '/tab2',
+        templateUrl: 'src/tab2.html'
+      });
   }
 
 })();
