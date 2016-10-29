@@ -30,9 +30,18 @@
       })
 
 
-      .state('tab2', {
-        url: '/tab2',
-        templateUrl: 'src/tab2.html'
+      .state('items', {
+        url: '/categories/{categoryShortName}',
+        template: `
+        <h2>Items for Category</h2>
+        <items-list items="itemsCtrl.items"></items>
+        `,
+        controller: 'ItemsController as itemsCtrl',
+        resolve: {
+          items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+            return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+          }]
+        }
       });
   }
 
