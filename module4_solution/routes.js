@@ -7,15 +7,26 @@
 
     // Set up UI states
     $stateProvider
-      .state('tab1', {
-        url: '/tab1',
-        template: "<h2>Hi from routes</h2>"
-        // templateUrl: 'src/tab1.html'
+      .state('categories', {
+        url: '/categories',
+        template: `
+          <h2>Categories</h2>
+          <categories-list categories="categoriesCtrl.categories"></categories>
+        `,
+        controller: 'CategoriesController as categoriesCtrl',
+        resolve: {
+          categories: ['MenuDataService', function (MenuDataService) {
+            return MenuDataService.getAllCategories();
+          }]
+        }
       })
 
       .state('home', {
         url: '/',
-        template: "<h2>Home Page</h2>"
+        template: `
+          <h2>Welcome to our Restaurant</h2>
+          <a ui-sref="categories" ui-sref-active="activeTab">Categories</a>
+        `
       })
 
 
