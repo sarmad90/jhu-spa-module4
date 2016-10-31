@@ -1,14 +1,15 @@
-angular.module('MenuApp').component('itemsList', {
-  template:`
-    <h1>Hi from the component (Items)</h1>
-    {{$ctrl.items}}
-    <ul>
-      <li ng-repeat="item in $ctrl.items.data.menu_items">
-        {{ item.id }} of {{ item.name }}
-      </li>
-    </ul>
-  `,
-  bindings: {
-    items: '<'
-  }
-});
+(function(){
+  angular.module('MenuApp').component('itemsList', {
+    template:`
+      <a ui-sref="categories" ui-sref-active="activeTab">Back</a>
+      <ul>
+        <li ng-repeat="item in $ctrl.items.data.menu_items">
+          {{ item.name }} (Id: {{ item.id }})
+        </li>
+      </ul>
+    `,
+    bindings: {
+      items: '<'
+    }
+  });
+})();
